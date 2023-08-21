@@ -18,4 +18,11 @@ public class ProductController {
   Response<List<Product>> getProducts(@RequestParam("ids") List<Long> ids) {
     return Response.ok(singletonList(Product.builder().id(111L).name("Toys").build()));
   }
+
+  @GetMapping("/sleep")
+  Response<List<Product>> getProductsWithSleep(@RequestParam("ids") List<Long> ids)
+      throws Exception {
+    Thread.sleep(1000);
+    return Response.ok(singletonList(Product.builder().id(111L).name("Toys").build()));
+  }
 }

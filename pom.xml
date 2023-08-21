@@ -3,17 +3,20 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-k8s-demo</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <parent>
         <groupId>io.github.flynn-zhangyg</groupId>
-        <artifactId>polaris</artifactId>
-        <version>0.0.3</version>
+        <artifactId>polaris-spring</artifactId>
+        <version>0.0.7</version>
     </parent>
 
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <maven.source.skip>true</maven.source.skip>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <modules>
@@ -25,16 +28,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2022.0.3</version>
+                <groupId>io.github.flynn-zhangyg</groupId>
+                <artifactId>polaris-spring</artifactId>
+                <version>0.0.7</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <finalName>spring-boot-k8s-demo</finalName>
-    </build>
 </project>

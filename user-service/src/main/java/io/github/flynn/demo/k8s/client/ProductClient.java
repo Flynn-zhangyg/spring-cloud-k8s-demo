@@ -15,4 +15,7 @@ public interface ProductClient {
 
   @GetMapping("/products")
   Response<List<Product>> getProductInfoByIds(@RequestParam("ids") List<Long> productIds);
+
+  @GetMapping("/products/sleep")
+  Response<List<Product>> getProductInfoByIdsWithSleep(@RequestParam("ids") List<Long> productIds);
 }

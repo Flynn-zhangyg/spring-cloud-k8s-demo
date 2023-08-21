@@ -4,8 +4,9 @@
     <parent>
         <groupId>io.github.flynn-zhangyg</groupId>
         <artifactId>spring-cloud-k8s-demo</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <artifactId>user-service</artifactId>
     <packaging>jar</packaging>
 
@@ -13,37 +14,37 @@
         <dependency>
             <groupId>io.github.flynn-zhangyg</groupId>
             <artifactId>k8s-demo-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.github.flynn-zhangyg</groupId>
             <artifactId>polaris-spring-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.github.flynn-zhangyg</groupId>
+            <artifactId>polaris-spring-config-apollo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.flynn-zhangyg</groupId>
+            <artifactId>polaris-spring-config-apollo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-log4j-2.x</artifactId>
+            <version>8.16.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-kubernetes-fabric8</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-kubernetes-fabric8-loadbalancer</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
@@ -51,24 +52,15 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-spring-boot</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lmax</groupId>
-            <artifactId>disruptor</artifactId>
-            <version>3.4.2</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.github.flynn-zhangyg</groupId>
-            <artifactId>polaris-test</artifactId>
+            <artifactId>polaris-spring-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.flynn-zhangyg</groupId>
+            <artifactId>polaris-spring-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -98,27 +90,21 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>user-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
                 <configuration>
-                    <skipSource>true</skipSource>
+                    <mainClass>io.github.flynn.demo.k8s.UserServiceApplication</mainClass>
+                    <layout>JAR</layout>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

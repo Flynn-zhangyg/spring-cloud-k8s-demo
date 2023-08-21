@@ -8,4 +8,6 @@ public interface UserService {
   User getUserInfoById(long id);
 
   List<Product> getProductsOfUser(long id);
+
+  List<Product> getProductsOfUserWithSleep(long id);
 }

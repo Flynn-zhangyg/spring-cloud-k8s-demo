@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
   public List<Product> getProductsOfUser(long id) {
     return productClient.getProductInfoByIds(singletonList(1L)).data();
   }
+
+  @Override
+  public List<Product> getProductsOfUserWithSleep(long id) {
+    return productClient.getProductInfoByIdsWithSleep(singletonList(1L)).data();
+  }
 }
